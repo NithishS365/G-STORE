@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Dashboard - G-STORE</title>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f1f8e9;
+    }
+    header, nav {
+      font-family: "Limelight", sans-serif;
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      background-color: #388e3c;
+      margin: 0 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+    }
+    .btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    h2{
+      font-family: "Limelight", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size:50px;
+    }
+  </style>
+</head>
+<body>
+  <header>G-STORE</header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/logout">Logout</a>
+  </nav>
+  <div class="container">
+    <h2>Shop Products</h2>
+    <div class="grid">
+      {% for product in products %}
+      <div class="card">
+        <img src="{{ product.image }}" alt="Product Image">
+        <h3>{{ product.name }}</h3>
+        <p>₹{{ product.price }}</p>
+        <a href="/buy/{{ product.id }}" class="btn">Buy Now</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

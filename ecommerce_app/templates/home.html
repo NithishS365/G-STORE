@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>G-STORE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Chelsea+Market&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Exa:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&family=Outfit:wght@600&family=Potta+One&family=Rubik+80s+Fade&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Chelsea+Market&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Exa:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&family=Outfit:wght@600&family=Potta+One&family=Rubik+80s+Fade&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+        body{
+          font-family: Arial, sans-serif;
+          height: 100vh;
+        }
+       .navbar1 {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #1d1f37;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .logo img {
+            width: 150px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin: 0 10px;
+            position: relative;
+        }
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #ffffff;
+            background-color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 30px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-right a:hover {
+            color: #ffffff;
+            background-color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .cart-btn {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-icon {
+            margin-right: 8px;
+        }
+
+        .login-btn {
+            background-color: #2ecc71;
+            padding: 8px 15px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .head{
+            display: flex;
+            color: rgb(0, 0, 0);
+      
+        }
+        .head2 h1{
+            font-family: "Bebas Neue", serif;
+            font-weight: 300;
+            font-size: 90px;
+            
+        }
+        .head2{
+          width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(59,59,59,1) 0%, rgba(154,154,154,1) 25%, rgba(186,185,185,1) 50%, rgba(222,222,222,1) 75%, rgba(222,222,222,1) 100%);
+            background-size: 400% 400%;
+            animation: gradient-animation 6s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 25%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+  
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+    .container {
+      padding: 20px;
+    }
+    .card-container {
+      display: flex;
+      gap: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+    .card {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .scroll-track {
+      display: flex;
+      animation: scroll 15s linear infinite;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    .card-container .scroll-track {
+      display: flex;
+    }
+    .card-container .scroll-track:last-child {
+      margin-left: 20px;
+    }
+
+    .container1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        .category-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 0px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            overflow: hidden;
+            text-align: center;
+            width: 300px;
+            transform: scale(1);
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .category-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+        .category-card h3 {
+          font-family:"Lexend Deca";
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .category-card .shop-now {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .category-card .shop-now:hover {
+            background-color: #388E3C;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .category-card {
+            animation: fadeIn 0.8s ease;
+        }
+
+        .pcard h1{
+            font-family:"Lexend Deca";
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+        .feature-item:not(:last-child)::after {
+            content: '';
+            height: 40px;
+            width: 1px;
+            background-color: #ddd;
+            position: absolute;
+            right: 0;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+        .feature-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        .feature-desc {
+            font-size: 0.9rem;
+            
+            color: #666;
+        }
+
+
+        .deal-section {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1800px;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .text-content h3 {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-content h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .text-content p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .text-content a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .text-content a:hover {
+            text-decoration: underline;
+        }
+
+        .image-content {
+            flex: 1;
+        }
+
+        .image-content img {
+            width: 650px;
+            height:320px
+        }
+
+        .unique-testimonials-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .unique-testimonials-section h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .unique-testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .unique-testimonial-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .unique-stars {
+      color: #ffc107;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .unique-testimonial-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .unique-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .unique-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid #e0e0e0;
+    }
+
+    .unique-author span {
+      font-weight: bold;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .footer {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      padding: 40px 20px;
+    }
+    .footer .footer-heading {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer .footer-links a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer .footer-links a:hover {
+      text-decoration: underline;
+    }
+    .footer .contact-info {
+      font-size: 0.9rem;
+    }
+    .footer .row.align-items-center {
+      align-items: center;
+    }
+    .footer .expert-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer .expert-section img {
+      max-width: 280px;
+    }
+.footer .LOGOIMAGE img {
+      max-width: 100px;
+    }
+
+    .newsletter-box {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f8f9fa;
+    }
+    .newsletter-box .newsletter-description {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    .footer .shop-help {
+      margin-top: 40px;
+    }
+    .footer .shop-help .footer-column {
+      margin-bottom: 20px;
+    }
+    .footer .shop-help .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer .shop-help .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    .footer .shop-help .footer-column ul li a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer .shop-help .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+    .footer .shop-help img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .footer h5 {
+      color: #333;
+      font-weight: bold;
+    }
+    .footer p {
+      color: #555;
+    }
+
+    .simple-footer {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: space-around;
+            background-color: #222;
+            color: #fff;
+            padding: 1px;
+            font-family: Arial, sans-serif;
+        }
+
+        .simple-footer p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        a{
+          text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #007bff;
+            transform: scale(1.2);
+        }
+
+  .button-86 {
+      all: unset;
+      width: 100px;
+      height: 30px;
+      font-size: 20px;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: #f0f0f0;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+}
+
+.button-86::after,
+.button-86::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.button-86::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button-86::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button-86:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button-86:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button-86:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+   
+</style>
+
+</head>
+<body >  
+  <nav class="navbar1">
+    <div class="logo">
+        <img src="https://ik.imagekit.io/Nithish/Screenshot%202025-06-25%20223551.png?updatedAt=1750871197067" alt="Logo" class="logo-img">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#cat">Shop Now</a></li>
+        <li><a href="#offer">Offers</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    
+
+    <div class="nav-right">
+        <a href="/login" class="cart-btn">
+            <span class="cart-icon">🛒</span> LOGIN
+        </a>
+        <a href="/register" class="login-btn">REGISTER</a>
+    </div>
+</nav>
+
+    <div class="head">
+        <img src="https://ik.imagekit.io/Nithish/clothes-on-a-rack-in-a-clothing-store.jpg?updatedAt=1750871720828" alt="" width="950px" height="657px">
+        <div class="head2">
+          <div class="ni" style="margin-left: 10px;"><h1 style="margin-top: 73px;">Step Into Style with the Biggest Fashion Drops! </h1>
+        <br><h2 style="font-family:'Poppins'";>Unbelievable Prices on All Your Favorite Clothing & Trends.</h2>
+        <br><a href="#cat"><button class="button-86" role="button">SHOP NOW</button></a>
+        <br><br><br> <br> <br><br><br> <h4></h4></div>
+        </div>
+
+    </div>
+    <br>
+    <div class="logo">
+          <div class="container">
+            <center><h1 style="font-family:Lexend Deca;">Popular Brands</h1> <br></center>
+            <div class="card-container">
+              <div class="scroll-track">
+                <div class="card-container" id="cardContainer">
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/levis-logo-brand-symbol-name-white-design-clothes-fashion-illustration-with-red-background-free-vector.jpg?updatedAt=1750872880644" alt="Sony"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/707129621.jpg?updatedAt=1750873452238" alt="PlayStation"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/2019-to-Present-Zara-logo-design-1024x538.webp?updatedAt=1750873452257" alt="Samsung"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/Indian-Terrain.jpg?updatedAt=1750873451978" alt="Dell"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/40-logo.webp?updatedAt=1750873637252" alt="LG"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/1_7MJoxgoEQBW-IMEMklTdVg.jpg?updatedAt=1750873764160" alt="Acer"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/HD-wallpaper-h-and-m-red-logo-red-brickwall-h-and-m-logo-fashion-brands-h-and-m-neon-logo-h-and-m-thumbnail.jpg?updatedAt=1750873835735" alt="Lenovo"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/ori_3684394_tr50dzsyzrcq5lj9scta4s9sey5gla3mrmh8jutj_ck-monogram-logo-design.jpg?updatedAt=1750873910588" alt="HP"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/68705965.jpg?updatedAt=1750874003290" alt="LG"></div>
+                  </div>
+              </div>
+
+              <div class="scroll-track">
+                <div class="card-container" id="cardContainer">
+                     <div class="card"><img src="https://ik.imagekit.io/Nithish/levis-logo-brand-symbol-name-white-design-clothes-fashion-illustration-with-red-background-free-vector.jpg?updatedAt=1750872880644" alt="Sony"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/707129621.jpg?updatedAt=1750873452238" alt="PlayStation"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/2019-to-Present-Zara-logo-design-1024x538.webp?updatedAt=1750873452257" alt="Samsung"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/Indian-Terrain.jpg?updatedAt=1750873451978" alt="Dell"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/40-logo.webp?updatedAt=1750873637252" alt="LG"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/1_7MJoxgoEQBW-IMEMklTdVg.jpg?updatedAt=1750873764160" alt="Acer"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/HD-wallpaper-h-and-m-red-logo-red-brickwall-h-and-m-logo-fashion-brands-h-and-m-neon-logo-h-and-m-thumbnail.jpg?updatedAt=1750873835735" alt="Lenovo"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/ori_3684394_tr50dzsyzrcq5lj9scta4s9sey5gla3mrmh8jutj_ck-monogram-logo-design.jpg?updatedAt=1750873910588" alt="HP"></div>
+                  <div class="card"><img src="https://ik.imagekit.io/Nithish/68705965.jpg?updatedAt=1750874003290" alt="LG"></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <br><br><br>
+    <div id="cat" class="pcard">
+      <center><h1>Product Categories</h1></center>
+          <main class="container1">
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/best-blazer-for-men.webp?updatedAt=1750875155560">
+                <h3>BLAZZERS</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/T-Shirt-Mock-Up-2-full.jpg?updatedAt=1750875031345">
+                <h3>T-Shirts</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/pqa5k_512.webp?updatedAt=1750875110077">
+                <h3>Pants</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/row-men-s-shirts-blue-colors-hanger_157912-617.avif?updatedAt=1750874991066">
+                <h3>Shirts</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/istockphoto-1366052585-612x612.jpg?updatedAt=1750875298214" >
+                <h3>Sports Wear</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+            <div class="category-card">
+                <img src="https://ik.imagekit.io/Nithish/2_eff8ede7-aeb0-4e6a-880c-bdc6dca53fe1.webp?updatedAt=1750875239898" alt="Beauty Products">
+                <h3>Socks</h3>
+                <a href="/login"><button class="shop-now">Shop Now</button></a>
+            </div>
+        </main>
+    </div>
+    <div class="container">
+      <center><h1 style="font-family:Lexend Deca;">Why Choose Us</h1> </center> <br>
+        <section class="features">
+          <div class="feature-item">
+              <div class="feature-icon">
+                  <img src="https://img.icons8.com/fluency/48/000000/shipped.png" alt="Free Shipping">
+              </div>
+              <div class="feature-title">Free Shipping</div>
+              <div class="feature-desc">When you spend $80 or more</div>
+          </div>
+          <div class="feature-item">
+              <div class="feature-icon">
+                  <img src="https://img.icons8.com/fluency/48/000000/chat.png" alt="Available 24/7">
+              </div>
+              <div class="feature-title">We are available 24/7</div>
+              <div class="feature-desc">Need help? Contact us anytime</div>
+          </div>
+          <div class="feature-item">
+              <div class="feature-icon">
+                  <img src="https://img.icons8.com/fluency/48/000000/synchronize.png" alt="Return Policy">
+              </div>
+              <div class="feature-title">Satisfied or Return</div>
+              <div class="feature-desc">Easy 30-day return policy</div>
+          </div>
+          <div class="feature-item">
+              <div class="feature-icon">
+                  <img src="https://img.icons8.com/fluency/48/000000/credit-card-interest.png" alt="Secure Payments">
+              </div>
+              <div class="feature-title">100% Secure Payments</div>
+              <div class="feature-desc">Visa, Mastercard, Stripe, PayPal</div>
+          </div>
+      </section>
+<br><br>
+         <div class="deal-section" id="offer">
+            <div class="text-content">
+                <h3>🛍️ Brand's Steal Deal</h3>
+                <h1>Save up to ₹5000 on premium fashion from top brands.</h1>
+                <p>Introducing the Style Icon of the Season — Limited Edition Designer Wear.</p>
+                <a href="/login">Shop now</a>
+            </div>
+            <div class="image-content">
+                <img src="https://ik.imagekit.io/Nithish/istockphoto-519398506-170667a.jpg?updatedAt=1750874238663" alt="Samsung Washing Machine">
+              </div>
+         </div>
+
+         <section style="font-family:Arial, sans-serif;" class="unique-testimonials-section">
+          <h2 style="font-family:Lexend Deca; font-size: 36px;">What is everyone saying?</h2>
+          <div class="unique-testimonials-container">
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"The new smartphone I ordered arrived quickly and in perfect condition. The specs were exactly as described, and the price was unbeatable! Highly recommend this site for tech enthusiasts."</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w1.jpg?updatedAt=1735202379380" alt="Rafael Stokes">
+                <span>Rafael Stokes</span>
+              </div>
+            </div>
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"The dress I ordered fits like a dream! The fabric is premium, and the colors are exactly as shown. Delivery was super fast too. Highly recommend for fashion lovers!"</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w2.jpg?updatedAt=1735202380385" alt="Chelsea Turner">
+                <span>Chelsea Turner</span>
+              </div>
+            </div>
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"I bought a casual blazer for my brother, and the quality blew me away. Great stitching, amazing style, and the support team was quick to respond. Will definitely shop again!"</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w3.jpg?updatedAt=1735202379705" alt="Jacqueline Mueller">
+                <span>Jacqueline Mueller</span>
+              </div>
+            </div>
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"Best deals on accessories! I grabbed a pair of sunglasses and a leather belt at half the price compared to other sites. FashionFiesta always nails it!"</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w4.jpg?updatedAt=1735202379599" alt="Olive Borer">
+                <span>Olive Borer</span>
+              </div>
+            </div>
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"I ordered a co-ord set during their weekend sale and it’s become my favorite outfit. The checkout was smooth, and the packaging was so neat. Loving the whole experience!".</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w5.jpg?updatedAt=1735202379798" alt="Priscilla Jacobson">
+                <span>Priscilla Jacobson</span>
+              </div>
+            </div>
+            <div class="unique-testimonial-card">
+              <div class="unique-stars">★★★★★</div>
+              <p>"The shoes I got from here are both comfy and stylish. Got so many compliments already. Delivery was prompt and the box felt like a gift!".</p>
+              <div class="unique-author">
+                <img src="https://ik.imagekit.io/Nithish/FR/w6.jpg?updatedAt=1735202380471" alt="Joseph Reinger">
+                <span>Joseph Reinger</span>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="row expert-section mb-4">
+          <div class="col-md-3 text-center">
+            <h5 class="footer-heading">Expert Advice</h5>
+            <p class="contact-info">123-456-7890</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <h5 class="footer-heading">Customer Service</h5>
+            <p class="contact-info">1-222-345-6789</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <h5 class="footer-heading">Have Questions?</h5>
+            <p><a href="#" class="footer-links">Contact Us</a></p>
+          </div>
+  
+          <div class="col-md-3 text-center">
+            <img src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-support-team.png" alt="Support Team" class="img-fluid">
+          </div>
+        </div>
+  
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="newsletter-box d-flex justify-content-between align-items-center">
+              <img src="https://ik.imagekit.io/Nithish/FR/kooo.jpg?updatedAt=1735202371201" alt="Newsletter Icon" class="me-3" width="100px">
+              <div>
+                <h5 class="footer-heading">Subscribe to our newsletter</h5>
+              </div>
+              <div class="newsletter-description me-3">
+                Sign up for all the latest news and special offers
+              </div>
+              <form class="newsletter-form d-flex">
+                <input type="email" class="form-control me-2" placeholder="Your email" required>
+                <button type="submit" class="btn btn-dark">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+  <div class="row shop-help" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    
+  
+    <!-- Shop Column -->
+    <div class="footer-column" style="flex: 1; margin-right: 20px;">
+      <h5 class="footer-heading">Shop</h5>
+      <img src="https://ik.imagekit.io/Nithish/FR/shopping-trolley-icon.png?updatedAt=1735204077346" alt="Shop Icon">
+      <ul>
+        <li><a href="/login">Hot Deals</a></li>
+        <li><a href="#cat">Categories</a></li>
+        <li><a href="#cat">Brands</a></li>
+        <li><a href="./under_development.html">Rebates</a></li>
+        <li><a href="./under_development.html">Weekly Deals</a></li>
+      </ul>
+    </div>
+  
+    <!-- Need Help Column -->
+    <div class="footer-column" style="flex: 1; margin-right: 20px;">
+      <h5 class="footer-heading">Need Help?</h5>
+      <img src="https://ik.imagekit.io/Nithish/FR/c.png?updatedAt=1735202368853" alt="Help Icon">
+      <ul>
+        <li><a href="/login">Contact</a></li>
+        <li><a href="/login">Order Tracking</a></li>
+        <li><a href="./under_development.html">FAQs</a></li>
+        <li><a href="./under_development.html">Return Policy</a></li>
+        <li><a href="./under_development.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <!-- Contact Column -->
+    <div class="footer-column" style="flex: 1;">
+      <h5 class="footer-heading">Contact</h5>
+      <img src="https://ik.imagekit.io/Nithish/FR/contact-us-icon.png?updatedAt=1735202368077" alt="Contact Icon">
+      <ul>
+        <li><strong>Address:</strong>KICE Infosystem , Old Bus Stand Road</li>
+        <li><strong>Email:</strong> <a href="mailto:contact@info.com">contact@info.com</a></li>
+        <li><strong>Phone:</strong> 929-242-6868</li>
+      </ul>
+    </div>
+  </div>
+    </footer>
+    
+    <footer class="simple-footer">
+      <p>Copyright © 2025 G-STORE</p>
+      <div class="social-icons">
+        <a href="www.facebook.com" class="fa fa-facebook"></a>
+        <a href="www.instagram.com" class="fa fa-instagram"></a>
+        <a href="www.youtube.com" class="fa fa-youtube-play"></a>
+        <a href="www.twitter.com" class="fa fa-twitter"></a>
+      </div>
+  </footer>
+</body>
+</html>

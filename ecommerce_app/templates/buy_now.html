@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buy Now - G-STORE</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec;
+      margin: 0;
+    }
+    header, nav {
+      background-color: #c2185b;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      background-color: #ad1457;
+      margin: 0 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    img {
+      width: 150px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #c2185b;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>G-STORE</header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/logout">Logout</a>
+  </nav>
+  <div class="container">
+    <h2>Order Summary</h2>
+    <img src="{{ product.image }}">
+    <p><strong>Product:</strong> {{ product.name }}</p>
+    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+    <p><strong>Customer:</strong> {{ user.username }}</p>
+    <p>This is a static confirmation page for demo purposes.</p>
+  </div>
+</body>
+</html>
