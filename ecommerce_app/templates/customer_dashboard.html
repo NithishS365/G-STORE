@@ -1,91 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Customer Dashboard - G-STORE</title>
+  <meta charset="UTF-8">
+  <title>Shop Clothing - FashionFiesta</title>
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');    body {
-      font-family: 'Segoe UI', sans-serif;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
       margin: 0;
-      background: #f1f8e9;
     }
-    header, nav {
-      font-family: "Limelight", sans-serif;
-      background-color: #2e7d32;
+
+    header {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
       color: white;
+      padding: 35px;
       text-align: center;
-      padding: 15px;
     }
+
+    nav {
+      text-align: center;
+      background: #ff4b2b;
+      padding: 12px;
+    }
+
     nav a {
-      text-decoration: none;
       color: white;
-      background-color: #388e3c;
-      margin: 0 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
+      margin: 0 15px;
+      font-weight: 600;
+      text-decoration: none;
     }
+
     .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
     }
+
     .card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 20px;
-      transition: 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .card img {
-      width: 120px;
-      height: auto;
       border-radius: 10px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      overflow: hidden;
     }
-    .btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #2e7d32;
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .details h4 {
+      margin: 5px 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .details p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .offer {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .price {
+      color: #e83e8c;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .buy-btn {
+      display: block;
+      background: #007bff;
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      padding: 10px;
+      margin: 15px;
+      text-align: center;
       text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
     }
-    h2{
-      font-family: "Limelight", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      font-size:50px;
+
+    .buy-btn:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-  <header>G-STORE</header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-  </nav>
-  <div class="container">
-    <h2>Shop Products</h2>
-    <div class="grid">
-      {% for product in products %}
-      <div class="card">
-        <img src="{{ product.image }}" alt="Product Image">
-        <h3>{{ product.name }}</h3>
-        <p>₹{{ product.price }}</p>
-        <a href="/buy/{{ product.id }}" class="btn">Buy Now</a>
+
+<header>Shop the Latest Trends</header>
+<nav>
+  <a href="/">Home</a>
+  <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+  <div class="grid">
+    {% for product in products %}
+    <div class="card">
+      <img src="{{ product['image_url'] }}">
+      <div class="details">
+        <h4>{{ product['name'] }}</h4>
+        <p>{{ product['description'] }}</p>
+        <p><strong>Seller:</strong> {{ product['seller_name'] }}</p>
+        <p class="price">₹ {{ product['price'] }}</p>
+        <p class="offer">{{ product['offer_percentage'] }}% OFF</p>
+        <a href="/buy/{{ product['id'] }}" class="buy-btn">Buy Now</a>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
+</div>
+
 </body>
 </html>

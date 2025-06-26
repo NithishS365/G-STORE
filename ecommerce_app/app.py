@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, session , flash
 from db import get_connection
-
+import random 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
@@ -64,7 +64,7 @@ def login():
 # def error():
 #     return render_template('error.html')
     
-@app.route('/customer')
+@app.route('/customer',methods=['GET', 'POST'])
 def customer_dashboard():
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
@@ -73,12 +73,12 @@ def customer_dashboard():
     conn.close()
     return render_template("customer_dashboard.html", products=products)
 
-@app.route('/buy/<int:product_id>')
-def buy_now(product_id):
+@app.route('/buy/<int:id>',methods=['GET', 'POST'])
+def buy_now(id):
     user = session.get('user')
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM products WHERE id=%s", (product_id,))
+    cursor.execute("SELECT * FROM products WHERE id=%s", (id,))
     product = cursor.fetchone()
     conn.close()
     return render_template("buy_now.html", user=user, product=product)
@@ -94,19 +94,25 @@ def seller_dashboard():
     conn.close()
     return render_template("seller_dashboard.html", products=products)
 
-@app.route('/add_product', methods=['POST'])
+@app.route('/add_product', methods=['GET', 'POST'])
 def add_product():
-    name = request.form['name']
-    price = request.form['price']
-    image = request.form['image']
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO products (name, price, image) VALUES (%s, %s, %s)", (name, price, image))
-    conn.commit()
-    conn.close()
-    return redirect('/seller')
+    if request.method == 'POST':
+        name = request.form['name']
+        description = request.form['description']
+        image_url = request.form['image_url']
+        price = float(request.form['price'])
+        seller_name = request.form['seller_name']
+        offer = random.randint(10, 50)
 
-@app.route('/delete_product/<int:id>')
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO products (name, description, image_url, price, seller_name, offer_percentage) VALUES (%s, %s, %s, %s, %s, %s)",
+                       (name, description, image_url, price, seller_name, offer))
+        conn.commit()
+        return redirect('/seller')
+    return render_template('add_product.html')
+
+@app.route('/delete_product/<int:id>', methods=['POST'])
 def delete_product(id):
     conn = get_connection()
     cursor = conn.cursor()
@@ -114,6 +120,7 @@ def delete_product(id):
     conn.commit()
     conn.close()
     return redirect('/seller')
+
 
 @app.route('/logout')
 def logout():

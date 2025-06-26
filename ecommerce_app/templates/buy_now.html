@@ -1,65 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Buy Now - G-STORE</title>
+  <meta charset="UTF-8">
+  <title>Order Details - Buy Now</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fce4ec;
-      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
     }
-    header, nav {
-      background-color: #c2185b;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-    nav a {
-      text-decoration: none;
-      color: white;
-      background-color: #ad1457;
-      margin: 0 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
+
+    .box {
+      max-width: 700px;
+      margin: auto;
       background: white;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    h2 {
       text-align: center;
+      color: #2c3e50;
     }
-    img {
-      width: 150px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-    }
-    .btn {
-      display: inline-block;
+
+    .section {
       margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #c2185b;
+    }
+
+    .section h4 {
+      margin-bottom: 8px;
+      color: #34495e;
+    }
+
+    .section p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .total {
+      font-weight: bold;
+      color: #e67e22;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #27ae60;
       color: white;
-      text-decoration: none;
+      padding: 12px;
       border-radius: 6px;
+      margin-top: 25px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #219150;
     }
   </style>
 </head>
 <body>
-  <header>G-STORE</header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-  </nav>
-  <div class="container">
-    <h2>Order Summary</h2>
-    <img src="{{ product.image }}">
-    <p><strong>Product:</strong> {{ product.name }}</p>
-    <p><strong>Price:</strong> ₹{{ product.price }}</p>
-    <p><strong>Customer:</strong> {{ user.username }}</p>
-    <p>This is a static confirmation page for demo purposes.</p>
+
+<div class="box">
+  <h2>Order Confirmation</h2>
+
+  <div class="section">
+    <h4>Product Details</h4>
+    <p><strong>ID:</strong> {{ product['id'] }}</p>
+    <p><strong>Name:</strong> {{ product['name'] }}</p>
+    <p><strong>Description:</strong> {{ product['description'] }}</p>
+    <p><strong>Seller:</strong> {{ product['seller_name'] }}</p>
+    <p><strong>Price:</strong> ₹{{ product['price'] }}</p>
+    <p><strong>Offer:</strong> {{ product['offer_percentage'] }}%</p>
   </div>
+
+  <div class="section">
+    <h4>User Details</h4>
+    <p><strong>Name:</strong> {{ user['full_name'] }}</p>
+    <p><strong>User ID:</strong> {{ user['username'] }}</p>
+  </div>
+
+  <div class="section">
+    <h4>Billing Summary</h4>
+    {% set discount = (product['price'] * product['offer_percentage']) / 100 %}
+    {% set total = product['price'] - discount %}
+    <p>Product Price: ₹{{ product['price'] }}</p>
+    <p>Discount: -₹{{ "%.2f"|format(discount) }} ({{ product['offer_percentage'] }}% off)</p>
+    <p class="total">Total Payable: ₹{{ "%.2f"|format(total) }}</p>
+  </div>
+
+  <a href="/" class="btn">Continue Shopping</a>
+</div>
+
 </body>
 </html>

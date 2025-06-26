@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Product - Seller Panel</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #34495e;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #f9f9f9;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(to right, #43cea2, #185a9d);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(to right, #185a9d, #43cea2);
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Add New Product</h2>
+  <form method="POST" action="/add_product">
+  <label>Product Name:</label>
+  <input type="text" name="name" required><br><br>
+
+  <label>Description:</label>
+  <textarea name="description" required></textarea><br><br>
+
+  <label>Image URL:</label>
+  <input type="url" name="image_url" required><br><br>
+
+  <label>Price (₹):</label>
+  <input type="number" step="0.01" name="price" required><br><br>
+
+  <label>Seller Name:</label>
+  <input type="text" name="seller_name" required><br><br>
+
+  <input type="submit" value="Add Product">
+</form>
+
+</div>
+
+</body>
+</html>
