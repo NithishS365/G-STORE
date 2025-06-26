@@ -65,7 +65,12 @@
         <div class="card p-4">
           <div class="card-body">
             <b><h3 class="card-title text-center mb-4">Login to G-STORE</b></h3>
-            <form method="post" action="/login">
+            {% if error %}
+            <div class="alert alert-danger text-center" role="alert">
+                  {{ error }}
+            </div>
+            {% endif %}
+            <form method="post" action="/login">     
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" name="username" required placeholder="Enter your username">

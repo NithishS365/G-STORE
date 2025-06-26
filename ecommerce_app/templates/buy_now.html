@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <title>Order Details - Buy Now</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Limelight&family=Rowdies:wght@300;400;700&family=Rubik+Dirt&display=swap');
     body {
-      font-family: 'Poppins', sans-serif;
+       font-family: "Rowdies", sans-serif;
+  font-weight: 300;
+  font-style: normal;
       background: #f4f4f4;
       padding: 40px;
     }
@@ -18,10 +21,18 @@
       border-radius: 10px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
+    h4{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 20px;
+    }
 
     h2 {
-      text-align: center;
-      color: #2c3e50;
+        font-family: "Limelight", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        font-size: 35px;
+        color: #000000;
     }
 
     .section {
@@ -63,7 +74,7 @@
 <body>
 
 <div class="box">
-  <h2>Order Confirmation</h2>
+  <u><h2>Order Confirmation</u></h2>
 
   <div class="section">
     <h4>Product Details</h4>
@@ -87,7 +98,7 @@
     {% set total = product['price'] - discount %}
     <p>Product Price: ₹{{ product['price'] }}</p>
     <p>Discount: -₹{{ "%.2f"|format(discount) }} ({{ product['offer_percentage'] }}% off)</p>
-    <p class="total">Total Payable: ₹{{ "%.2f"|format(total) }}</p>
+    <p style="font-size: 18px; text-align: center; border: #230040 2px solid ; border-radius: 5px; padding: 10px;" class="total">Total Payable: ₹{{ "%.2f"|format(total) }}</p>
   </div>
 
   <a href="/" class="btn">Continue Shopping</a>
